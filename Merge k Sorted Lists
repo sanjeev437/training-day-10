@@ -1,0 +1,31 @@
+class Solution(object):
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        if lists == None:
+            return None
+        
+        results = []
+        for head in lists:
+            if head == None:
+                continue
+            while head != None:
+                results.append(head.val)
+                head = head.next
+                
+        
+        results.sort()
+        head = None
+        runner = None
+        for val in results:
+            if head == None:
+                head = ListNode(val)
+                runner = head
+            else:
+                runner.next = ListNode(val)
+                runner = runner.next
+                
+            
+        return head        
